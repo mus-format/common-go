@@ -17,3 +17,10 @@ var ErrWrongFormat = errors.New("wrong format")
 
 // ErrUnsupportedIntSize happens on init, if system int size is not supported.
 var ErrUnsupportedIntSize = errors.New("unsupported IntSize")
+
+// ErrUnknownDTM happens when there is no such DTM in Registry.
+var ErrUnknownDTM = errors.New("unknown DTM")
+
+// ErrWrongTypeVersion happens when the type version from Registry dosn't hold
+// a specific type.
+var ErrWrongTypeVersion = errors.New("wrong TypeVersion")
