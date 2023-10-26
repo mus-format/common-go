@@ -2,7 +2,7 @@ package testdata
 
 import "math"
 
-// Unsigned test cases ---------------------------------------------------------
+// Unsigned test cases
 var Uint64TestCases = []uint64{
 	0,
 	1000,
@@ -138,4 +138,39 @@ var MapTestCases = []map[float32]uint8{
 	{},
 	{1.0: 8, 20.182736: 110, math.MaxFloat32: math.MaxUint8},
 	{math.SmallestNonzeroFloat32: 0, 0: 0},
+}
+
+// Pointer mapping test struct
+type PointerMappingStruct struct {
+	A1 *int
+	A2 *int
+
+	B1 *int
+	B2 *int
+
+	C1 *string
+	C2 *string
+}
+
+func MakePointerMappingTestStruct() []PointerMappingStruct {
+	a := 1
+	ap := &a
+	b := 2
+	bp := &b
+	c := "hello world"
+	cp := &c
+
+	return []PointerMappingStruct{
+		PointerMappingStruct{
+			A1: ap,
+			A2: ap,
+
+			B1: bp,
+			B2: bp,
+
+			C1: cp,
+			C2: cp,
+		},
+		PointerMappingStruct{},
+	}
 }
