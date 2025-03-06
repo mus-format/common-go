@@ -37,9 +37,13 @@ func (m *PtrMap) Get(ptr unsafe.Pointer) (key int, pst bool) {
 	return
 }
 
+func (m *PtrMap) Len() int {
+	return len(m.m)
+}
+
 // NewReversePtrMap creates a new ReversePtrMap.
-func NewReversePtrMap() ReversePtrMap {
-	return ReversePtrMap{
+func NewReversePtrMap() *ReversePtrMap {
+	return &ReversePtrMap{
 		m: make(map[int]unsafe.Pointer),
 	}
 }
@@ -49,11 +53,15 @@ type ReversePtrMap struct {
 	m map[int]unsafe.Pointer
 }
 
-func (mp ReversePtrMap) Put(key int, ptr unsafe.Pointer) {
+func (mp *ReversePtrMap) Put(key int, ptr unsafe.Pointer) {
 	mp.m[key] = ptr
 }
 
-func (mp ReversePtrMap) Get(key int) (ptr unsafe.Pointer, pst bool) {
+func (mp *ReversePtrMap) Get(key int) (ptr unsafe.Pointer, pst bool) {
 	ptr, pst = mp.m[key]
 	return
+}
+
+func (mp *ReversePtrMap) Len() int {
+	return len(mp.m)
 }
