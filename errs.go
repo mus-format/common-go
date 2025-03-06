@@ -24,3 +24,6 @@ var ErrUnknownDTM = errors.New("unknown DTM")
 // ErrWrongTypeVersion happens when the type version from Registry dosn't hold
 // a specific type.
 var ErrWrongTypeVersion = errors.New("wrong TypeVersion")
+
+// ErrTooLargeLength happens when the length of the encoded array is too large.
+var ErrTooLargeLength = errors.New("too large length")
