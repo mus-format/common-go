@@ -25,5 +25,5 @@ var ErrUnknownDTM = errors.New("unknown DTM")
 // a specific type.
 var ErrWrongTypeVersion = errors.New("wrong TypeVersion")
 
-// ErrTooLargeLength happens when the length of the encoded array is too large.
+// ErrTooLargeLength happens when the encoded length is too large.
 var ErrTooLargeLength = errors.New("too large length")
