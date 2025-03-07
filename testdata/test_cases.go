@@ -127,6 +127,13 @@ var PointerTestCases = func() []*string {
 	}
 }()
 
+// Array test cases
+var ArrayTestCases = [][3]int{
+	{},
+	{1, 2, 3},
+	{math.MaxInt, math.MinInt, 0},
+}
+
 // Slice test cases
 var SliceTestCases = [][]int{
 	{},
@@ -141,36 +148,19 @@ var MapTestCases = []map[float32]uint8{
 }
 
 // Pointer mapping test struct
-type PointerMappingStruct struct {
+type PtrStruct struct {
 	A1 *int
 	A2 *int
-
-	B1 *int
-	B2 *int
-
-	C1 *string
-	C2 *string
+	A3 *int
 }
 
-func MakePointerMappingTestStruct() []PointerMappingStruct {
+func PointerMappingTestCases() []PtrStruct {
 	a := 1
-	ap := &a
 	b := 2
-	bp := &b
-	c := "hello world"
-	cp := &c
-
-	return []PointerMappingStruct{
-		PointerMappingStruct{
-			A1: ap,
-			A2: ap,
-
-			B1: bp,
-			B2: bp,
-
-			C1: cp,
-			C2: cp,
-		},
-		PointerMappingStruct{},
+	return []PtrStruct{
+		{A1: nil, A2: nil, A3: nil},
+		{A1: &a, A2: &a, A3: &a},
+		{A1: &b, A2: &b, A3: &b},
+		{A1: &a, A2: &a, A3: &b},
 	}
 }
