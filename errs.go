@@ -2,10 +2,14 @@ package common
 
 import (
 	"errors"
+	"fmt"
 )
 
-// ErrorPrefix is a prefix for all errors.
+// ErrorPrefix is a prefix for all serializer errors.
 const ErrorPrefix = "mus: "
+
+// ErrorDTSPrefix is a prefix for all dts errors.
+const ErrorDTSPrefix = "dts: "
 
 // ErrOverflow happens on Unmarshal when bytes number limit of the type was
 // exceeded.
@@ -30,3 +34,9 @@ var ErrWrongTypeVersion = errors.New(ErrorPrefix + "wrong TypeVersion")
 
 // ErrTooLargeLength happens when the encoded length is too large.
 var ErrTooLargeLength = errors.New(ErrorPrefix + "too large length")
+
+// NewWrongDTMError happens when DTS tries to unmarshal data with wrong DTM.
+func NewWrongDTMError(expected, actual DTM) error {
+	return fmt.Errorf(ErrorDTSPrefix+"wrong DTM, expected %d, got %d",
+		expected, actual)
+}
