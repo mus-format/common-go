@@ -1,4 +1,4 @@
-package com
+package common
 
 // Validator is the interface that wraps Validate method.
 //

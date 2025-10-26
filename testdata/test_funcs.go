@@ -8,7 +8,8 @@ import (
 )
 
 func TestUnmarshalResults[T any](wantV, v T, wantN, n int, wantErr, err error,
-	mocks []*mok.Mock, t *testing.T) {
+	mocks []*mok.Mock, t *testing.T,
+) {
 	if !reflect.DeepEqual(v, wantV) {
 		t.Errorf("unexpected v, want '%v' actual '%v'", wantV, v)
 	}
@@ -24,7 +25,8 @@ func TestUnmarshalResults[T any](wantV, v T, wantN, n int, wantErr, err error,
 }
 
 func TestSkipResults(wantN, n int, wantErr, err error, mocks []*mok.Mock,
-	t *testing.T) {
+	t *testing.T,
+) {
 	if n != wantN {
 		t.Errorf("unexpected n, want '%v' actual '%v'", wantN, n)
 	}

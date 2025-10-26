@@ -1,4 +1,4 @@
-package com
+package common
 
 import "strconv"
 
@@ -39,8 +39,10 @@ const (
 	Uint8MaxLastByte  byte = 255
 )
 
-var uintMaxVarIntLen int
-var uintMaxLastByte byte
+var (
+	uintMaxVarIntLen int
+	uintMaxLastByte  byte
+)
 
 // UintMaxVarintLen returns the maximum number of bytes used by Varint encoding
 // for uint type.

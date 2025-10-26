@@ -1,4 +1,4 @@
-package com
+package common
 
 import "unsafe"
 

@@ -1,4 +1,4 @@
-package com
+package common
 
 // These constants define the number of bytes required for all uint, int,
 // float types in Raw encoding.
@@ -14,17 +14,17 @@ type Integer64 interface {
 	~uint | ~uint64 | ~int | ~int64
 }
 
-// Integer64 is a constraint that permits any 32-bit integer type.
+// Integer32 is a constraint that permits any 32-bit integer type.
 type Integer32 interface {
 	~uint | ~uint32 | ~int | ~int32
 }
 
-// Integer64 is a constraint that permits any 16-bit integer type.
+// Integer16 is a constraint that permits any 16-bit integer type.
 type Integer16 interface {
 	~uint16 | ~int16
 }
 
-// Integer64 is a constraint that permits any 8-bit integer type.
+// Integer8 is a constraint that permits any 8-bit integer type.
 type Integer8 interface {
 	~uint8 | ~int8
 }

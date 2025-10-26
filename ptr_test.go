@@ -1,4 +1,4 @@
-package com
+package common
 
 import (
 	"testing"
@@ -6,7 +6,6 @@ import (
 )
 
 func TestPtrMap(t *testing.T) {
-
 	t.Run("Put and Get should work correctly", func(t *testing.T) {
 		var (
 			wantKey1 = 0
@@ -51,11 +50,9 @@ func TestPtrMap(t *testing.T) {
 			t.Errorf("unexpected pst, want %v actual %v", false, pst)
 		}
 	})
-
 }
 
 func TestReversePtrMap(t *testing.T) {
-
 	t.Run("Put and Get should work correctly", func(t *testing.T) {
 		var (
 			n1   = 1
@@ -91,5 +88,4 @@ func TestReversePtrMap(t *testing.T) {
 			t.Errorf("unexpected pst, want %v actual %v", false, pst)
 		}
 	})
-
 }
