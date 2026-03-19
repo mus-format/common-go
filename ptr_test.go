@@ -3,6 +3,8 @@ package common
 import (
 	"testing"
 	"unsafe"
+
+	asserterror "github.com/ymz-ncnk/assert/error"
 )
 
 func TestPtrMap(t *testing.T) {
@@ -22,33 +24,20 @@ func TestPtrMap(t *testing.T) {
 			key2     = mp.Put(ptr2)
 			key3     = 0
 		)
-		if key1 != wantKey1 {
-			t.Errorf("unexpected key1, want %v actual %v", wantKey1, key1)
-		}
-		if key2 != wantKey2 {
-			t.Errorf("unexpected key1, want %v actual %v", wantKey2, key2)
-		}
+		asserterror.Equal(t, key1, wantKey1, "unexpected key1")
+		asserterror.Equal(t, key2, wantKey2, "unexpected key2")
+
 		key1, pst := mp.Get(ptr1)
-		if key1 != wantKey1 {
-			t.Errorf("unexpected key1, want %v actual %v", wantKey1, key1)
-		}
-		if pst != true {
-			t.Errorf("unexpected pst, want %v actual %v", true, pst)
-		}
+		asserterror.Equal(t, key1, wantKey1, "unexpected key1")
+		asserterror.Equal(t, pst, true, "unexpected pst")
+
 		key2, pst = mp.Get(ptr2)
-		if key2 != wantKey2 {
-			t.Errorf("unexpected key1, want %v actual %v", wantKey2, key2)
-		}
-		if pst != true {
-			t.Errorf("unexpected pst, want %v actual %v", true, pst)
-		}
+		asserterror.Equal(t, key2, wantKey2, "unexpected key2")
+		asserterror.Equal(t, pst, true, "unexpected pst")
+
 		key3, pst = mp.Get(ptr3)
-		if key3 != wantKey3 {
-			t.Errorf("unexpected key3, want %v actual %v", wantKey3, key3)
-		}
-		if pst != false {
-			t.Errorf("unexpected pst, want %v actual %v", false, pst)
-		}
+		asserterror.Equal(t, key3, wantKey3, "unexpected key3")
+		asserterror.Equal(t, pst, false, "unexpected pst")
 	})
 }
 
@@ -67,25 +56,15 @@ func TestReversePtrMap(t *testing.T) {
 		mp.Put(key1, ptr1)
 		mp.Put(key2, ptr2)
 		ptr, pst := mp.Get(key1)
-		if ptr != ptr1 {
-			t.Errorf("unexpected ptr, want %v actual %v", ptr1, ptr)
-		}
-		if pst != true {
-			t.Errorf("unexpected pst, want %v actual %v", true, pst)
-		}
+		asserterror.Equal(t, ptr, ptr1, "unexpected ptr")
+		asserterror.Equal(t, pst, true, "unexpected pst")
+
 		ptr, pst = mp.Get(key2)
-		if ptr != ptr2 {
-			t.Errorf("unexpected ptr, want %v actual %v", ptr2, ptr)
-		}
-		if pst != true {
-			t.Errorf("unexpected pst, want %v actual %v", true, pst)
-		}
+		asserterror.Equal(t, ptr, ptr2, "unexpected ptr")
+		asserterror.Equal(t, pst, true, "unexpected pst")
+
 		ptr, pst = mp.Get(key3)
-		if ptr != nil {
-			t.Errorf("unexpected ptr, want %v actual %v", nil, ptr)
-		}
-		if pst != false {
-			t.Errorf("unexpected pst, want %v actual %v", false, pst)
-		}
+		asserterror.Equal(t, ptr, nil, "unexpected ptr")
+		asserterror.Equal(t, pst, false, "unexpected pst")
 	})
 }

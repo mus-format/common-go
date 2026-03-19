@@ -25,7 +25,7 @@ func (v Validator[T]) RegisterNValidate(n int, fn ValidateFn[T]) Validator[T] {
 }
 
 func (v Validator[T]) Validate(t T) (err error) {
-	vals, err := v.Call("Validate", mok.SafeVal[T](t))
+	vals, err := v.Call("Validate", t)
 	if err != nil {
 		panic(err)
 	}
